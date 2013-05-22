@@ -13,6 +13,8 @@ set tabstop=4
 set expandtab
 set shiftwidth=4
 set autoindent
+set cindent
+"set smartindent
 %retab
 set nowrap
 "set autochdir
@@ -22,22 +24,14 @@ set backspace=indent,eol,start
 set csprg=/emc/zhenga1/bin/cscope/bin/cscope
 set incsearch
 set laststatus=2
-"if exists('+colorcolumn')
-  "set colorcolumn=80
-"else
-  "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
-"endif
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%81v.\+/
 
-set tags=/emc/zhenga1/build/fc/tags
-:cs add  /emc/zhenga1/build/fc/cscope.out
-"set tags=/emc/zhenga1/build/spvol/tags
-":cs add  /emc/zhenga1/build/spvol/cscope.out
-"set tags=/emc/zhenga1/build/mountCursor/tags
-":cs add  /emc/zhenga1/build/mountCursor/cscope.out
-"set tags=/emc/zhenga1/build/unmount/tags
-":cs add  /emc/zhenga1/build/unmount/cscope.out
+"set mps+=<:>
+"au FileType c,cpp,java set mps+==:;
+"let g:rainbow_operators = 2 
+"au FileType c,cpp,objc,objcpp call rainbow#load()
+
+set tags=/emc/zhenga1/codeRepo/accurev/codebrowse75/safe/tags
+:cs add  /emc/zhenga1/codeRepo/accurev/codebrowse75/safe/cscope.out
 
 "fuzzyFinder
 map ff <ESC>:FufFile<CR>
@@ -56,6 +50,9 @@ map    <F12>            :MarkClear<CR>
 map    <C-S-N>          :NERDTree<CR>
 nmap   <C-M><C-P>       <leader>#
 nmap   <C-M><C-N>       <leader>*
+map    <S-W>            <leader><leader>w
+map    <S-B>            <leader><leader>b
+map    <S-M>            <leader>m
 
 let Tlist_Use_Right_Window   = 1
 let Tlist_Show_One_File      = 1
@@ -71,9 +68,13 @@ let TagbarAccessProtected    = 1
 let g:tagbar_width           = 80
 " Mark
 let g:mwIgnoreCase           = 0 
+" folding
+let c_no_comment_fold        = 1
 
-highlight MarkWord7 ctermbg=Gray ctermfg=Black guibg=#8CCBEA guifg=Black
-highlight MarkWord8 ctermbg=90   ctermfg=Black guibg=#8CCBEA guifg=Black
+highlight  MarkWord7   ctermbg=Gray  ctermfg=Black
+highlight  MarkWord8   ctermbg=93    ctermfg=Black
+highlight  MarkWord9   ctermbg=94    ctermfg=Black
+highlight  MarkWord10  ctermbg=166   ctermfg=Black
 
 "let mapleader=","
 ":autocmd BufEnter * call DoWordComplete()
@@ -84,7 +85,7 @@ endif
 if exists('+colorcolumn')
   set colorcolumn=80
 else
-  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+  "au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
 
 nmap <C-S-P> :call <SID>SynStack()<CR>
