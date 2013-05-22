@@ -1,0 +1,9 @@
+startup_message off
+defscrollback 1024
+term "screen-256color"
+#term "xterm-256color"
+
+
+hardstatus on
+hardstatus alwayslastline
+hardstatus string "%{.bW}%-w%{.rY}%n %t%{-}%+w %=%{..G} %Y/%m/%d %c:%s "
