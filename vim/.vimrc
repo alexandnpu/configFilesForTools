@@ -4,6 +4,13 @@ Helptags
 syntax on
 filetype plugin indent on
 
+if &term =~ '256color'
+      " Disable Background Color Erase (BCE) so that color schemes
+      " work properly when Vim is used inside tmux and GNU screen.
+      " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
+      set t_ut=
+endif
+
 set ruler
 set t_Co=256
 colorscheme desert 
@@ -69,6 +76,7 @@ let g:tagbar_width           = 80
 " Mark
 let g:mwIgnoreCase           = 0 
 " folding
+" " do not fold the comment of c-style
 let c_no_comment_fold        = 1
 
 highlight  MarkWord7   ctermbg=Gray  ctermfg=Black
